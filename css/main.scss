@@ -3,6 +3,8 @@
 $font-header: 'Circular-Bold', sans-serif;
 $font-body: 'Circular', sans-serif;
 $primary-blue: #2196F3;
+$primary-red: #F75C50;
+$container-padding: 2rem;
 
 @font-face {
   font-family: 'Circular';
@@ -20,33 +22,90 @@ html, body {
   padding: 0rem;
 }
 
-.header-container {
-  height: 10vh;
+.underline {
+  transition: all 0.5s ease;
+  border-bottom: 2px solid black;
+  padding-bottom: 1px;
+  &:hover {
+    color: white;
+    padding: 3px;
+    background-color: black;
+    text-decoration: none;
+  }
+}
+
+
+.clickable {
+  cursor: pointer;
+}
+
+.main-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  .header {
-    flex: 1;
-    margin-left: 2rem;
-    font-size: 1.2rem;
-    font-family: $font-header;
-    color: $primary-blue;
+}
+
+.sidebar-container {
+  flex: 1;
+  padding-top: 1.5rem;
+  background-color: $primary-red;
+  .info-text {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    font-family: $font-body;
+    padding: 2rem 2rem 0rem 2rem;
   }
-  .search {
-    flex: 2;
-    input {
-      outline: 0;
-      text-decoration: none;
-      border: 0;
-      border-bottom: 1px solid $primary-blue;
-      font-size: 1rem;
-      padding-bottom: 0.25rem;
-    }
+  .contact-info {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    font-family: $font-body;
+    padding: $container-padding;
+  }
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .tab {
+    flex: 1;
+    text-align: center;
+    font-family: $font-header;
+    padding-bottom: calc(1rem + 3px);
+    cursor: pointer;
+  }
+  .active-tab {
+    @extend .tab;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid black;
+  }
+}
+
+.search-container {
+  padding: 2rem 2rem 2rem 2rem;
+  display: flex;
+  align-items: center;
+  .search-icon {
+    height: 1rem;
+    width: auto;
+    margin-right: 1rem;
+    display: inline-block;
+  }
+  .search-bar {
+    text-decoration: none;
+    background-color: $primary-red;
+    width: 85%;
+    outline: 0;
+    border: 0;
+    border-bottom: 2px solid black;
+    font-size: 1rem;
+    padding-bottom: 0.25rem;
+    font-family: $font-header;
   }
 }
 
 .map-container {
-  height: 90vh;
+  height: 100vh;
+  flex: 3;
   #map {
     height: 100%;
   }
