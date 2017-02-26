@@ -10,7 +10,6 @@ export default class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-      showSearch: false,
       searchTerm: "",
       activeTab: "about"
     });
@@ -58,9 +57,6 @@ export default class Index extends React.Component {
     const handleSearch = () => {
       this.setState({ searchTerm: e.target.value });
     }
-    const toggleSearch = () => {
-      this.setState({showSearch: !this.state.showSearch });
-    }
     const goToSearch = () => {
       this.setState({activeTab: "search"});
     }
@@ -89,7 +85,7 @@ export default class Index extends React.Component {
         return (
           <div className="sidebar-container">
             {tabs()}
-            <p className="info-text">The Berkeley Bug Project tries to make it easier for Berkeley students to collect bugs for assignments. This website is run by the <span className="underline">Etomology Club at Berkeley</span>. If you want to suggest that we add a specific bug to the map, feel free to reach out to us at ecb@gmail.com. We would love to hear from you!</p>
+            <p className="info-text">The Berkeley Bug Project tries to make it easier for Berkeley students to collect bugs for assignments. This website is run by the <span className="underline">Etomology Club at Berkeley</span>. If you want to suggest that we add a specific bug to the map, feel free to reach out to us at <span className="underline">ecb@gmail.com</span>. We would love to hear from you!</p>
             <p className="contact-info">
               <span className="underline clickable">Facebook</span> <br/><br/>
               <span className="underline clickable">Twitter</span>
@@ -102,7 +98,7 @@ export default class Index extends React.Component {
             {tabs()}
             <p className="info-text">Trying to find a specific bug? You can search below and see if it is in our collection!</p>
             <div className="search-container">
-              <img onClick={toggleSearch} className="search-icon" src="./assets/search-black.png" />
+              <img className="search-icon" src="./assets/search-black.png" />
               <input
                 id="search-bar"
                 className="search-bar"
