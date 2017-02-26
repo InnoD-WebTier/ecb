@@ -1,9 +1,16 @@
+// Hover animation with the text taken from, ya know, a
+// real designer aka Hongye Xu
+//
+// hongyexu.co
+//
+
+
 @import "./vendors/normalize";
 
 $font-header: 'Circular-Bold', sans-serif;
 $font-body: 'Circular', sans-serif;
 $primary-blue: #2196F3;
-$primary-red: #F75C50;
+$primary-red: #FF8177;
 $container-padding: 2rem;
 
 @font-face {
@@ -28,7 +35,7 @@ html, body {
   padding-bottom: 1px;
   &:hover {
     color: white;
-    padding: 3px;
+    padding: 5px;
     background-color: black;
     text-decoration: none;
   }
@@ -49,8 +56,8 @@ html, body {
   padding-top: 1.5rem;
   background-color: $primary-red;
   .info-text {
-    font-size: 0.9rem;
-    line-height: 1.3rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
     font-family: $font-body;
     padding: 2rem 2rem 0rem 2rem;
   }
