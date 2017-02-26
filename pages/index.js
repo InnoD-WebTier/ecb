@@ -12,7 +12,8 @@ export default class Index extends React.Component {
     super(props);
     this.state = ({
       searchTerm: "",
-      activeTab: "about"
+      activeTab: "about",
+      bugs: data.bugs,
     });
   }
 
@@ -35,7 +36,8 @@ export default class Index extends React.Component {
         center: berkeley_loc,
         mapTypeControl: false
       });
-      const bugs = data.bugs;
+      const bugs = this.state.bugs;
+      const updated_bugs = [];
       for (let bug of bugs) {
 
         const desc = "<div class='info-container'><p class='title'>{0}</p><br/><p class='desc'>{1}</p></div>".format(bug.name, bug.string);
@@ -47,10 +49,16 @@ export default class Index extends React.Component {
           position: bug.position,
           map: map
         });
+
+        const updated_bug = bug;
+        updated_bug["marker"] = marker;
+        updated_bugs.push(updated_bug);
+
         marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
       }
+      this.setState({ bugs: updated_bugs });
     }
     $.loadScript = function (url, callback) {
       $.ajax({
@@ -96,12 +104,21 @@ export default class Index extends React.Component {
 
     const populateData = () => {
       const searchTerm = this.state.searchTerm.toLowerCase();
-      const filtered = data.bugs.filter(bug => bug.name.toLowerCase().includes(searchTerm));
+      const filtered = this.state.bugs.filter(bug => {
+        const valid = bug.name.toLowerCase().includes(searchTerm);
+        if (!valid) {
+          bug.marker.setVisible(false);
+        } else {
+          bug.marker.setVisible(true);
+        }
+        return valid;
+      });
       const content = filtered.map((item, i) => (
           <div key={i} className="result">
             {item.name}
           </div>
       ));
+      console.log(this.state.bugs);
       return content;
     }
 
