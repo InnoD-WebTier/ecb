@@ -9,18 +9,21 @@
 
 $font-header: 'Circular-Bold', sans-serif;
 $font-body: 'Circular', sans-serif;
-$primary-blue: #2196F3;
-$primary-red: #FF8177;
+$primary-blue: #427FED;
 $container-padding: 2rem;
+
+$highlight-color: white;
+$highlight-background: #427FED;
+
 
 @font-face {
   font-family: 'Circular';
-  src: url('./fonts/Circular-Book.ttf')  format('truetype'),
+  src: url('./fonts/AkkuratProRegular.ttf')  format('truetype'),
 }
 
 @font-face {
   font-family: 'Circular-Bold';
-  src: url('./fonts/Circular-Bold.ttf')  format('truetype'),
+  src: url('./fonts/AkkuratPro-Bold.ttf')  format('truetype'),
 }
 
 html, body {
@@ -29,32 +32,42 @@ html, body {
   padding: 0rem;
 }
 
+p {
+  margin: 0rem;
+}
+
 .underline {
   transition: all 0.5s ease;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid $highlight-background;
   padding-bottom: 1px;
   &:hover {
-    color: white;
-    padding: 5px;
-    background-color: black;
+    color: $highlight-color;
+    padding: 6px 4px 4px 4px;
+    background-color: $highlight-background;
     text-decoration: none;
   }
 }
-
 
 .clickable {
   cursor: pointer;
 }
 
 .main-container {
-  display: flex;
-  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  margin: 0rem;
+  padding: 0rem;
 }
 
 .sidebar-container {
-  flex: 1;
-  padding-top: 1.5rem;
-  background-color: $primary-red;
+  position: absolute;
+  overflow: auto;
+  border-radius: 5px;
+  height: 100%;
+  width: 450px;
+  background-color: white;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  z-index: 1;
   .info-text {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -75,15 +88,27 @@ html, body {
   justify-content: center;
   .tab {
     flex: 1;
+    padding-top: 1.5rem;
+    background-color: white;
+    color: $primary-blue;
     text-align: center;
     font-family: $font-header;
-    padding-bottom: calc(1rem + 3px);
+    padding-bottom: 1.2rem;
     cursor: pointer;
   }
   .active-tab {
     @extend .tab;
-    padding-bottom: 1rem;
-    border-bottom: 3px solid black;
+    color: white;
+    background-color: $primary-blue;
+  }
+}
+
+.results-container {
+  padding: 0rem 2rem 1rem 2rem;
+  .result {
+    padding: 1rem 0rem;
+    font-family: $font-body;
+    color: black;
   }
 }
 
@@ -92,28 +117,38 @@ html, body {
   display: flex;
   align-items: center;
   .search-icon {
-    height: 1rem;
+    height: 1.1rem;
     width: auto;
     margin-right: 1rem;
     display: inline-block;
   }
   .search-bar {
     text-decoration: none;
-    background-color: $primary-red;
     width: 85%;
     outline: 0;
     border: 0;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid $primary-blue;
     font-size: 1rem;
     padding-bottom: 0.5rem;
     font-family: $font-header;
   }
 }
 
-.map-container {
+.main-container {
   height: 100vh;
-  flex: 3;
+  width: 100%;
   #map {
     height: 100%;
+  }
+}
+
+.info-container {
+  padding: 1rem;
+  .title {
+    font-family: $font-header;
+    color: $primary-blue;
+  }
+  .desc {
+    font-family: $font-body;
   }
 }
