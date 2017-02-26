@@ -14,9 +14,6 @@ module.exports = React.createClass({
   render () {
     return (
       <div>
-        <div className="header-container">
-          <p className="header">Berkeley Bug Map</p>
-        </div>
         <div>
           {this.props.children}
         </div>
