@@ -29,49 +29,6 @@ export default class Index extends React.Component {
         ;
       });
     };
-
-    const loadMap = () => {
-      const berkeley_loc = {lat: 37.8709987, lng: -122.2680837};
-      const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: berkeley_loc,
-        mapTypeControl: false
-      });
-      this.setState({ map });
-      const bugs = this.state.bugs;
-      const updated_bugs = [];
-      for (let bug of bugs) {
-
-        const desc = "<div class='info-container'><p class='title'>{0}</p><br/><p class='desc'>{1}</p></div>".format(bug.name, bug.string);
-
-        const infowindow = new google.maps.InfoWindow({
-          content: desc,
-        });
-        const marker = new google.maps.Marker({
-          position: bug.position,
-          map: map
-        });
-
-        const updated_bug = bug;
-        updated_bug["marker"] = marker;
-        updated_bug["infowindow"] = infowindow;
-        updated_bugs.push(updated_bug);
-
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-      }
-      this.setState({ bugs: updated_bugs });
-    }
-    $.loadScript = function (url, callback) {
-      $.ajax({
-          url: url,
-          dataType: 'script',
-          success: callback,
-          async: true
-      });
-    }
-    $.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAK-0aO8lrEis8_DuFJj8EevofQjhOh9Oc', loadMap);
   }
 
   render () {
