@@ -62,7 +62,6 @@ p {
 .sidebar-container {
   position: absolute;
   overflow: auto;
-  border-radius: 5px;
   height: 100%;
   width: 450px;
   background-color: white;
@@ -106,9 +105,15 @@ p {
 .results-container {
   padding: 0rem 2rem 1rem 2rem;
   .result {
+    transition: all 0.5s ease;
     padding: 1rem 0rem;
     font-family: $font-body;
     color: black;
+  }
+  .result:hover {
+    color: white;
+    padding: 1rem 1rem;
+    background-color: $primary-blue;
   }
 }
 
@@ -149,6 +154,6 @@ p {
     color: $primary-blue;
   }
   .desc {
-    font-family: $font-body;
+    font-family: font-body;
   }
 }

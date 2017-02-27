@@ -14,6 +14,7 @@ export default class Index extends React.Component {
       searchTerm: "",
       activeTab: "about",
       bugs: data.bugs,
+      map: null,
     });
   }
 
@@ -36,6 +37,7 @@ export default class Index extends React.Component {
         center: berkeley_loc,
         mapTypeControl: false
       });
+      this.setState({ map });
       const bugs = this.state.bugs;
       const updated_bugs = [];
       for (let bug of bugs) {
@@ -52,6 +54,7 @@ export default class Index extends React.Component {
 
         const updated_bug = bug;
         updated_bug["marker"] = marker;
+        updated_bug["infowindow"] = infowindow;
         updated_bugs.push(updated_bug);
 
         marker.addListener('click', function() {
@@ -102,6 +105,10 @@ export default class Index extends React.Component {
       );
     }
 
+    const showMarker = (item) => {
+      item.infowindow.open(this.state.map, item.marker);
+    }
+
     const populateData = () => {
       const searchTerm = this.state.searchTerm.toLowerCase();
       const filtered = this.state.bugs.filter(bug => {
@@ -114,11 +121,10 @@ export default class Index extends React.Component {
         return valid;
       });
       const content = filtered.map((item, i) => (
-          <div key={i} className="result">
-            {item.name}
-          </div>
+        <div key={i} onClick={() => showMarker(item)} className="result">
+          {item.name}
+        </div>
       ));
-      console.log(this.state.bugs);
       return content;
     }
 
