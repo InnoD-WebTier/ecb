@@ -7,24 +7,23 @@
 
 @import "./vendors/normalize";
 
+@font-face {
+  font-family: 'Circular-Book';
+  src: url('./fonts/Circular-Book.ttf') format('truetype'),
+}
+
+@font-face {
+  font-family: 'Circular-Bold';
+  src: url('./fonts/Circular-Bold.ttf') format('truetype'),
+}
+
 $font-header: 'Circular-Bold', sans-serif;
-$font-body: 'Circular', sans-serif;
+$font-body: 'Circular-Book', sans-serif;
 $primary-blue: #427FED;
 $container-padding: 2rem;
 
 $highlight-color: white;
 $highlight-background: #427FED;
-
-
-@font-face {
-  font-family: 'Circular';
-  src: url('./fonts/AkkuratProRegular.ttf')  format('truetype'),
-}
-
-@font-face {
-  font-family: 'Circular-Bold';
-  src: url('./fonts/AkkuratPro-Bold.ttf')  format('truetype'),
-}
 
 html, body {
   height: 100%;
@@ -59,51 +58,22 @@ p {
   padding: 0rem;
 }
 
-.sidebar-container {
-  position: absolute;
-  overflow: auto;
-  height: 100%;
-  width: 450px;
-  background-color: white;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  z-index: 1;
-  .info-text {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-family: $font-body;
-    padding: 2rem 2rem 0rem 2rem;
-  }
-  .contact-info {
-    font-size: 0.9rem;
-    line-height: 1.3rem;
-    font-family: $font-body;
-    padding: $container-padding;
-  }
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .tab {
-    flex: 1;
-    padding-top: 1.5rem;
-    background-color: white;
-    color: $primary-blue;
-    text-align: center;
-    font-family: $font-header;
-    padding-bottom: 1.2rem;
-    cursor: pointer;
-  }
-  .active-tab {
-    @extend .tab;
-    color: white;
-    background-color: $primary-blue;
-  }
-}
-
 .results-container {
-  padding: 0rem 2rem 1rem 2rem;
+  position: absolute;
+  z-index: 1;
+  left: 3rem;
+  top: calc(3rem + 40px + 16px + 3rem);
+
+  border-radius: 5px;
+
+  height: calc(100vh - 3rem - 40px - 16px - 3rem - 3rem - 3rem);
+  width: 350px;
+  padding: 1.5rem;
+
+  background: white;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.19), 0 2px 2px rgba(0,0,0,0.23);
+  overflow: auto;
+
   .result {
     transition: all 0.5s ease;
     padding: 1rem 0rem;
@@ -118,9 +88,23 @@ p {
 }
 
 .search-container {
-  padding: 2rem 2rem 2rem 2rem;
+  position: absolute;
+  z-index: 1;
+  left: 3rem;
+  top: 3rem;
+
+  border-radius: 5px;
+
+  height: 40px;
+  width: 350px;
+  padding: 1.5rem;
+
+  background: white;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.19), 0 2px 2px rgba(0,0,0,0.23);
+
   display: flex;
   align-items: center;
+
   .search-icon {
     height: 1.1rem;
     width: auto;
@@ -154,6 +138,6 @@ p {
     color: $primary-blue;
   }
   .desc {
-    font-family: font-body;
+    font-family: $font-body;
   }
 }
