@@ -9,7 +9,7 @@ import '../css/main';
 import data from './data/bug';
 
 export default class Index extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = ({
@@ -33,7 +33,7 @@ export default class Index extends React.Component {
     };
 
     const loadMap = () => {
-      const berkeley_loc = {lat: 37.8709987, lng: -122.2680837};
+      const berkeley_loc = {lat: 37.8749987, lng: -122.2580837};
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: berkeley_loc,
